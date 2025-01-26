@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace tp_web_equipo_C.Datos
+namespace Acceso_a_Datos
 {
     public class AccesoDatos
     {
@@ -19,18 +21,13 @@ namespace tp_web_equipo_C.Datos
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=Clinica_DB; integrated security=true");
             comando = new SqlCommand();
         }
         public void setearConsulta(string consulta)
         {
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
-        }
-        public void setearSP(string sp)
-        {
-            comando.CommandType = System.Data.CommandType.StoredProcedure;
-            comando.CommandText = sp;
         }
         public void ejecutarLectura()
         {
@@ -52,6 +49,19 @@ namespace tp_web_equipo_C.Datos
             {
                 conexion.Open();
                 comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public int ejecutarAccionScalar()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                return int.Parse(comando.ExecuteScalar().ToString());
             }
             catch (Exception ex)
             {

@@ -11,7 +11,7 @@ namespace Clinica
 {
 
 
-    public partial class _Default
+    public partial class Especialidades
     {
     }
 }
