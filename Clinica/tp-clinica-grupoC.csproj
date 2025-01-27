@@ -99,6 +99,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgregarEspecialidad.aspx" />
+    <Content Include="AgregarMedico.aspx" />
+    <Content Include="AgregarPaciente.aspx" />
+    <Content Include="AgregarTurno.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -185,6 +189,34 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarEspecialidad.aspx.cs">
+      <DependentUpon>AgregarEspecialidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarEspecialidad.aspx.designer.cs">
+      <DependentUpon>AgregarEspecialidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarMedico.aspx.cs">
+      <DependentUpon>AgregarMedico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarMedico.aspx.designer.cs">
+      <DependentUpon>AgregarMedico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarPaciente.aspx.cs">
+      <DependentUpon>AgregarPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarPaciente.aspx.designer.cs">
+      <DependentUpon>AgregarPaciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarTurno.aspx.cs">
+      <DependentUpon>AgregarTurno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarTurno.aspx.designer.cs">
+      <DependentUpon>AgregarTurno.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Default.aspx.cs">

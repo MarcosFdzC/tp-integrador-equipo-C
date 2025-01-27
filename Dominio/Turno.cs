@@ -18,7 +18,7 @@ namespace Dominio
     }
     public class Turno
     {
-        //Turno: Id, Paciente, Medico, Especialidad, FechaHora, Observaciones, Estado
+        //Turno: Id, Paciente(obj), Medico(obj), Especialidad(obj), FechaHora, Observaciones, Estado
         public int Id { get; set; }
         public Paciente Paciente { get; set; }
         public Medico Medico { get; set; }
