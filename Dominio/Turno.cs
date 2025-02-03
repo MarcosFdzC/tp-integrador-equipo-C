@@ -15,6 +15,7 @@ namespace Dominio
         Cerrado = 3,
         Cancelado = 4,
         NoAsistio = 5,
+
     }
     public class Turno
     {

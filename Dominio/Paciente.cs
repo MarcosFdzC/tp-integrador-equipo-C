@@ -8,6 +8,7 @@ namespace Dominio
 {
     public class Paciente
     {
+        //Id, Nom,Apell, Dni, FechaNacimiento, Telefono, Email, Turnos
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }

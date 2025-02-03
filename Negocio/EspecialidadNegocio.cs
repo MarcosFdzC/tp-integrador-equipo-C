@@ -20,7 +20,7 @@ namespace Negocio
             List<Especialidad> lista = new List<Especialidad>();
             try
             {
-                datos.setearConsulta("Select * from Especialidad");
+                datos.setearConsulta("select Nombre, Id from Especialidad");
                 datos.ejecutarLectura();
                 Especialidad aux = new Especialidad();
                 while (datos.Lector.Read())
@@ -42,6 +42,29 @@ namespace Negocio
                 datos.cerrarConexion();
             }
             
+        }
+        public List<Especialidad> listarFiltrado(Especialidad especialidad)
+        {
+
+            AccesoDatos datos = new AccesoDatos();
+            List<Especialidad> lista = new List<Especialidad>();
+            try
+            {
+                datos.setearConsulta("select Nombre, Id from Especialidad where Id = @IdEspecialidad");
+                datos.setearParametro("@IdEspecialidad", especialidad.Id);
+                datos.ejecutarLectura();
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
 
     }

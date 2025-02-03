@@ -49,7 +49,7 @@
             <asp:TextBox ID="txtEmail" runat="server" class="form-control"></asp:TextBox>
         </div>
     </div>
-    <asp:Button ID="btnAgregar" runat="server" Text="" class="btn btn-primary"/>
+    <asp:Button ID="btnAgregar" runat="server" Text="" class="btn btn-primary" OnClick="btnAgregar_Click"/>
     <div class="col-2"></div>
 
 

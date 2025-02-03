@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dominio;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,14 @@ namespace Clinica
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            //TurnoNegocio turnoNegocio = new TurnoNegocio();
+            //turnoNegocio.listar();
+            TurnoTrabajoNegocio ttn = new TurnoTrabajoNegocio();
+            //ttn.listar();
         }
     }
 }
