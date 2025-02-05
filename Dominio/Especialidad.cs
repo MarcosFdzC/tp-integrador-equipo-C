@@ -8,11 +8,11 @@ namespace Dominio
 {
     public class Especialidad
     {
-        //Especialidad: Id, Nombre, Evauluar si tambien va: Medicos(ListaMedico)
+        //Especialidad: Id, Nombre
         public int Id { get; set; }
         public string Nombre { get; set; }
 
-        //public List<Medico> Medicos { get; set; }
+        
 
 
     }

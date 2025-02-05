@@ -15,7 +15,7 @@ namespace Dominio
         public string Apellido { get; set; }
         public List<Turno> Turnos { get; set; }
         public List<Especialidad> Especialidades { get; set; }
-        public List<TurnoTrabajo> TrunosTrabajo { get; set; }
+        public List<TurnoTrabajo> TurnosTrabajo { get; set; }
 
     }
 }

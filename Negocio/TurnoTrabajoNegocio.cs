@@ -46,44 +46,42 @@ namespace Negocio
             }
 
         }
+        public List<TurnoTrabajo> listarFiltradoMedico(Medico medico)
+        {
 
+            AccesoDatos datos = new AccesoDatos();
+            List<TurnoTrabajo> lista = new List<TurnoTrabajo>();
+            try
+            {
+                datos.setearConsulta("select TT.HoraEntrada, TT.HoraSalida, TT.Nombre, TT.Id from TurnoTrabajo TT, [TurnoTrabajo.Medico] TTM where TTM.IdMedico = @IdMedico and TTM.IdTurnoTrabajo = TT.Id");
+                datos.ejecutarLectura();
+                datos.setearParametro("@IdMedico", medico.Id);
+                TurnoTrabajo aux = new TurnoTrabajo();
+                while (datos.Lector.Read())
+                {
+                    if (!(datos.Lector["TT.Id"] is DBNull))
+                        aux.Id = (int)datos.Lector["TT.Id"];
+                    if (!(datos.Lector["TT.HoraEntrada"] is DBNull))
+                        aux.HoraEntrada = datos.Lector.GetTimeSpan(datos.Lector.GetOrdinal("TT.HoraEntrada"));
+                    if (!(datos.Lector["TT.HoraSalida"] is DBNull))
+                        aux.HoraSalida = datos.Lector.GetTimeSpan(datos.Lector.GetOrdinal("TT.HoraSalida"));
+                    if (!(datos.Lector["TT.Nombre"] is DBNull))
+                        aux.Nombre = (string)datos.Lector["TT.Nombre"];
 
-                        //FALTA VERIFICAR ESTE MÉTODO QUE ESTÉ CORRECTO
-        //public List<TurnoTrabajo> listarFiltrado(Medico medico)
-        //{
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
 
-        //    AccesoDatos datos = new AccesoDatos();
-        //    List<TurnoTrabajo> lista = new List<TurnoTrabajo>();
-        //    try
-        //    {
-        //        datos.setearConsulta("select HoraEntrada, HoraSalida, Nombre, Id from TurnoTrabajo where Id = @IdTurnoTrabajo");
-        //        datos.setearParametro("@IdTurnoTrabajo", turnoTrabajo.Id);
-        //        datos.ejecutarLectura();
-        //        TurnoTrabajo aux = new TurnoTrabajo();
-        //        while (datos.Lector.Read())
-        //        {
-        //            if (!(datos.Lector["Id"] is DBNull))
-        //                aux.Id = (int)datos.Lector["Id"];
-        //            if (!(datos.Lector["HoraEntrada"] is DBNull))
-        //                aux.HoraEntrada = datos.Lector.GetTimeSpan(datos.Lector.GetOrdinal("HoraEntrada"));
-        //            if (!(datos.Lector["HoraSalida"] is DBNull))
-        //                aux.HoraSalida = datos.Lector.GetTimeSpan(datos.Lector.GetOrdinal("HoraSalida"));
-        //            if (!(datos.Lector["Nombre"] is DBNull))
-        //                aux.Nombre = (string)datos.Lector["Nombre"];
+        }
 
-        //            lista.Add(aux);
-        //        }
-        //        return lista;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //    finally
-        //    {
-        //        datos.cerrarConexion();
-        //    }
-
-        //}
     }
 }

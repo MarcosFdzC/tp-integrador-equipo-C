@@ -8,6 +8,7 @@ namespace Dominio
 {
     public class TurnoTrabajo
     {
+        // Id, hEntrada, hSalida, Nombre
         public int Id { get; set; }
         public TimeSpan HoraEntrada { get; set; }
         public TimeSpan HoraSalida { get; set; }

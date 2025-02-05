@@ -43,16 +43,27 @@ namespace Negocio
             }
             
         }
-        public List<Especialidad> listarFiltrado(Especialidad especialidad)
+        public List<Especialidad> listarFiltradoMedico(Medico medico)
         {
 
             AccesoDatos datos = new AccesoDatos();
             List<Especialidad> lista = new List<Especialidad>();
             try
             {
-                datos.setearConsulta("select Nombre, Id from Especialidad where Id = @IdEspecialidad");
-                datos.setearParametro("@IdEspecialidad", especialidad.Id);
+                datos.setearConsulta("select Me.IdEspecialidad, E.Nombre Nombre from [Medico.Especialidad] ME, Especialidad E where ME.IdMedico = @IdMedico and ME.IdEspecialidad = E.Id");
+                datos.setearParametro("@IdMedico", medico.Id);
                 datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    Especialidad aux = new Especialidad();
+                    if (!(datos.Lector["Id"] is DBNull))
+                        aux.Id = (int)datos.Lector["Id"];
+                    if (!(datos.Lector["Nombre"] is DBNull))
+                        aux.Nombre = (string)datos.Lector["Nombre"];
+
+                    lista.Add(aux);
+                }
+
 
                 return lista;
             }

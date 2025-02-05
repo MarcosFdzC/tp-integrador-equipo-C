@@ -19,15 +19,33 @@ namespace Negocio
             {
                 datos.setearConsulta("select Nombre, Apellido, Id from Medico");
                 datos.ejecutarLectura();
-                Medico aux = new Medico();
                 while (datos.Lector.Read())
                 {
                     //Id, Nombre, Apellido, Turnos(lista), Especialidades(lista), TurnosTrabajo(Lista)
                     
+                    Medico aux = new Medico();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Apellido = (string)datos.Lector["Apellido"];
+            //Turnos
                     //Turno: Id, Paciente(obj), Medico(obj), Especialidad(obj), FechaHora, Observaciones, Estado
+                    TurnoNegocio turnoNegocio = new TurnoNegocio();
+                    turnoNegocio.listarFiltradoMedico(aux);
+                    aux.Turnos = new List<Turno>();
+                    aux.Turnos = turnoNegocio.listarFiltradoMedico(aux);
+                    int cuentaturnos = aux.Turnos.Count;
+
+            //Especialidades
+                    EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
+                    aux.Especialidades = new List<Especialidad>();
+                    aux.Especialidades = especialidadNegocio.listarFiltradoMedico(aux);
+                    int cuentaEspecialidades = aux.Especialidades.Count;
+            //Turnos de trabajo
+                    // Id, hEntrada, hSalida, Nombre
+                    TurnoTrabajoNegocio TTNegocio = new TurnoTrabajoNegocio();
+                    aux.TurnosTrabajo = new List<TurnoTrabajo>();
+                    aux.TurnosTrabajo = TTNegocio.listarFiltradoMedico(aux);
+                    int cuentaTurnosTRabajo = aux.TurnosTrabajo.
 
                     lista.Add(aux);
                 }
