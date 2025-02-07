@@ -21,7 +21,8 @@ namespace Negocio
 				Paciente aux = new Paciente();
 				while (datos.Lector.Read())
 				{
-					if (!(datos.Lector["Nombre"] is DBNull))
+                    //Id, Nom,Apell, Dni, FechaNacimiento, Telefono, Email, Turnos
+                    if (!(datos.Lector["Nombre"] is DBNull))
 						aux.Nombre = (string)datos.Lector["Nombre"];
 					if (!(datos.Lector["Apellido"] is DBNull))
 						aux.Apellido = (string)datos.Lector["Apellido"];
@@ -36,8 +37,10 @@ namespace Negocio
                     if (!(datos.Lector["Id"] is DBNull))
                         aux.Id = (int)datos.Lector["Id"];
 					//Ahora cargamos la lista de turnos
-					TurnoNegocio turnoNegocio = new TurnoNegocio();
-
+					//TurnoNegocio turnoNegocio = new TurnoNegocio();
+					//aux.Turnos = new List<Turno>();
+					//if(turnoNegocio.listarFiltradoPaciente(aux).Count() > 0)
+					//	aux.Turnos = turnoNegocio.listarFiltradoPaciente(aux);
 
 
 					lista.Add(aux);
@@ -56,7 +59,7 @@ namespace Negocio
 				datos.cerrarConexion();
 			}
 		}
-        public List<Paciente> listarFiltrado(Paciente paciente)
+        public List<Paciente> listarFiltradoPaciente(Paciente paciente)
         {
 
             AccesoDatos datos = new AccesoDatos();
@@ -129,5 +132,6 @@ namespace Negocio
 				datos.cerrarConexion();
 			}
         }
+
     }
 }
