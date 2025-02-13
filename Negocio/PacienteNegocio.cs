@@ -18,9 +18,9 @@ namespace Negocio
 			{
 				datos.setearConsulta("select Nombre, Apellido, Dni, FechaNacimiento, Telefono, Email, Id from Paciente");
 				datos.ejecutarLectura();
-				Paciente aux = new Paciente();
 				while (datos.Lector.Read())
 				{
+					Paciente aux = new Paciente();
                     //Id, Nom,Apell, Dni, FechaNacimiento, Telefono, Email, Turnos
                     if (!(datos.Lector["Nombre"] is DBNull))
 						aux.Nombre = (string)datos.Lector["Nombre"];

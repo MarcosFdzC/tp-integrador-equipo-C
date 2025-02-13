@@ -16,5 +16,17 @@ namespace Clinica
             dgvPacientes.DataSource = pacienteNeg.listar();
             dgvPacientes.DataBind();
         }
+
+        protected void dgvPacientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var algo = dgvPacientes.SelectedRow.Cells[0].Text;
+            var id = dgvPacientes.SelectedDataKey.Value.ToString();
+            Response.Redirect("AgregarPaciente.aspx?" + id, false);
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgregarPaciente.aspx", false);
+        }
     }
 }

@@ -57,12 +57,13 @@
             </div>
         </nav>
         <div class="container body-content d-flex flex-column min-vh-100">
+            <hr />
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 
             </asp:ContentPlaceHolder>
             <hr />
             <footer class="text-center p-3 mt-auto">
-                <p>&copy; <%: DateTime.Now.Year %> - Tp integrador Grupo C</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Tp integrador Marcos Fernández</p>
             </footer>
         </div>
     </form>
