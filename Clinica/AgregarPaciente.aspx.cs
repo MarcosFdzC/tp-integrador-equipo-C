@@ -13,15 +13,31 @@ namespace Clinica
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            btnAgregar.Text = Request.QueryString["id"] != null ? "Modificiar" : "Agregar";
+            if (Session["paciente"] != null && Request.QueryString["id"] != null)
+            {
+                Paciente paciente = (Paciente)Session["paciente"];
+                txtNombre.Text = paciente.Nombre;
+                txtApellido.Text = paciente.Apellido;
+                txtDni.Text = paciente.Dni.ToString();
+                txtFechaNacimiento.Text = paciente.FechaNacimiento.ToString();
+                txtTelefono.Text = paciente.Telefono.ToString();
+                txtEmail.Text = paciente.Email;
 
+            }
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            //TurnoNegocio turnoNegocio = new TurnoNegocio();
-            //turnoNegocio.listar();
-            TurnoTrabajoNegocio ttn = new TurnoTrabajoNegocio();
-            //ttn.listar();
+            PacienteNegocio pacienteNegocio = new PacienteNegocio();
+            Paciente paciente = new Paciente();
+            paciente.Nombre = txtNombre.Text;
+            paciente.Apellido = txtApellido.Text;
+            paciente.Dni = int.Parse(txtDni.Text);
+            paciente.FechaNacimiento = DateTime.Parse(txtFechaNacimiento.Text);
+            paciente.Telefono = int.Parse(txtTelefono.Text);
+            paciente.Email = txtEmail.Text;
+            pacienteNegocio.Agregar(paciente);
         }
     }
 }
